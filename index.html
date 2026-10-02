@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entraîneur de finales d'échecs : maîtrisez le mat à 2 Fous, Fou + Cavalier, et 2 Cavaliers contre Roi. Mode tutoriel et mode pratique contre une IA.">
+  <title>Finales d'Échecs — Entraîneur</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================================================================
+     HOME VIEW
+================================================================ -->
+<div id="view-home" class="view">
+  <div class="home-header">
+    <span class="home-logo">♛</span>
+    <h1>Finales d'Échecs</h1>
+    <p>Maîtrisez les 3 finales essentielles avec pièces légères —<br>tutoriel pas-à-pas et entraînement contre une IA.</p>
+  </div>
+
+  <div class="cards-grid">
+
+    <!-- KBB -->
+    <div class="card" style="--c:#60a5fa">
+      <div class="card-top">
+        <div class="card-icon">♗♗</div>
+        <div class="card-titles">
+          <div class="card-title">Roi + 2 Fous</div>
+          <div class="card-vs">vs Roi</div>
+        </div>
+      </div>
+      <div class="card-diff">
+        <span class="star-icon">★</span>
+        <span class="star-icon">★</span>
+        <span class="star-icon empty">★</span>
+        <span class="diff-label">Intermédiaire</span>
+      </div>
+      <div class="card-intro">
+        La méthode de la <strong>"boîte"</strong> : rétrécissez progressivement l'espace du roi adverse pour le forcer dans un coin. Attention au pat !
+      </div>
+      <div class="card-actions card-actions-3">
+        <button class="btn btn-ghost" onclick="startTutorial('KBB')">📖 Cours</button>
+        <button class="btn btn-guided" onclick="startGuided('KBB')">🎯 Guidé</button>
+        <button class="btn btn-solid" onclick="startPractice('KBB')">⚔️ Libre</button>
+      </div>
+    </div>
+
+    <!-- KBN -->
+    <div class="card" style="--c:#a78bfa">
+      <div class="card-top">
+        <div class="card-icon">♗♘</div>
+        <div class="card-titles">
+          <div class="card-title">Roi + Fou + Cavalier</div>
+          <div class="card-vs">vs Roi</div>
+        </div>
+      </div>
+      <div class="card-diff">
+        <span class="star-icon">★</span>
+        <span class="star-icon">★</span>
+        <span class="star-icon">★</span>
+        <span class="diff-label">Difficile</span>
+      </div>
+      <div class="card-intro">
+        La finale la plus technique. Maîtrisez la <strong>manœuvre en W</strong> du Cavalier pour pousser le roi vers le bon coin !
+      </div>
+      <div class="card-actions card-actions-3">
+        <button class="btn btn-ghost" onclick="startTutorial('KBN')">📖 Cours</button>
+        <button class="btn btn-guided" onclick="startGuided('KBN')">🎯 Guidé</button>
+        <button class="btn btn-solid" onclick="startPractice('KBN')">⚔️ Libre</button>
+      </div>
+    </div>
+
+    <!-- KNN -->
+    <div class="card" style="--c:#f59e0b">
+      <div class="card-top">
+        <div class="card-icon">♘♘</div>
+        <div class="card-titles">
+          <div class="card-title">Roi + 2 Cavaliers</div>
+          <div class="card-vs">vs Roi</div>
+        </div>
+      </div>
+      <div class="card-diff">
+        <span class="star-icon">★</span>
+        <span class="star-icon">★</span>
+        <span class="star-icon">★</span>
+        <span class="diff-label">Très Difficile</span>
+      </div>
+      <div class="card-intro">
+        Nulle théorique contre une défense parfaite, mais <strong>redoutable</strong> en pratique si l'adversaire s'enferme en coin !
+      </div>
+      <div class="card-actions card-actions-3">
+        <button class="btn btn-ghost" onclick="startTutorial('KNN')">📖 Cours</button>
+        <button class="btn btn-guided" onclick="startGuided('KNN')">🎯 Guidé</button>
+        <button class="btn btn-solid" onclick="startPractice('KNN')">⚔️ Libre</button>
+      </div>
+    </div>
+
+  </div>
+</div><!-- end #view-home -->
+
+
+<!-- ================================================================
+     GAME VIEW  (Tutorial + Practice)
+================================================================ -->
+<div id="view-game" class="view">
+
+  <!-- BOARD AREA -->
+  <div class="board-wrap">
+    <div id="board"></div>
+  </div>
+
+  <!-- SIDE PANEL -->
+  <div class="side-panel">
+
+    <!-- Header -->
+    <div class="panel-header">
+      <button class="btn-back" onclick="goHome()">← Retour</button>
+      <h2 id="panel-title"></h2>
+      <div id="panel-mode-badge"></div>
+    </div>
+
+    <!-- Step title (tutorial only) -->
+    <div id="panel-step-title" style="font-size:1rem;font-weight:700;"></div>
+
+    <!-- Status message -->
+    <div id="panel-status" class="status-box status-info">Chargement...</div>
+
+    <!-- Comment / explanation -->
+    <div id="panel-comment" class="comment-box"></div>
+
+    <!-- TUTORIAL CONTROLS -->
+    <div id="tutorial-controls" class="hidden">
+      <div class="tut-nav">
+        <button id="btn-prev" class="btn-nav" onclick="tutorialPrev()">◀ Précédent</button>
+        <span id="tut-progress">1 / 6</span>
+        <button id="btn-next" class="btn-nav" onclick="tutorialNext()">Suivant ▶</button>
+      </div>
+    </div>
+
+    <!-- PRACTICE / GUIDED CONTROLS -->
+    <div id="practice-controls" class="hidden">
+      <div class="move-label">Coups : <span id="move-count">0</span> / 50</div>
+      <div class="move-bar-wrap">
+        <div class="move-bar-fill" id="move-progress-bar"></div>
+      </div>
+      <div class="game-action-buttons">
+        <button id="btn-hint" class="btn-action btn-hint-action" onclick="requestHint()">💡 Indice / Meilleur coup</button>
+        <button id="btn-retry" class="btn-action btn-retry-action" onclick="undoPlayerMove()">↩ Annuler le coup</button>
+        <button class="btn-restart" onclick="restartPractice()">🔄 Recommencer</button>
+      </div>
+    </div>
+
+  </div><!-- end .side-panel -->
+</div><!-- end #view-game -->
+
+<script src="chess.js"></script>
+<script src="ai.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
