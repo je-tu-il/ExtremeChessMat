@@ -1,32 +1,55 @@
-# ExtremeChessMat ♟️
+# ♟️ ExtremeChessMat — Entraîneur de Finales d'Échecs Complexes
 
-**ExtremeChessMat** est un entraîneur interactif de finales d'échecs conçu pour maîtriser les mats les plus techniques avec pièces légères :
-- ♗♗ **Roi + 2 Fous vs Roi** (Méthode de la boîte et resserrement des diagonales).
-- ♗♘ **Roi + Fou + Cavalier vs Roi** (La finale académique par excellence, manœuvre en W et orientation vers le bon coin).
-- ♘♘ **Roi + 2 Cavaliers vs Roi** (Technique de barrage, confinement et exploitation des erreurs).
+[![Live Demo](https://img.shields.io/badge/Demo%20en%20Ligne-S'entraîner%20sur%20GitHub%20Pages-success?style=for-the-badge&logo=github)](https://je-tu-il.github.io/ExtremeChessMat/)
+[![Vanilla JS](https://img.shields.io/badge/Tech-Vanilla%20JS%20%7C%20CSS3-F7DF1E.svg?logo=javascript)](https://developer.mozilla.org/fr/docs/Web/JavaScript)
+[![Syzygy Tablebases](https://img.shields.io/badge/Engine-Syzygy%20%2B%20Minimax-blue.svg)](https://tablebase.lichess.ovh/)
+[![Zero Install](https://img.shields.io/badge/Dependencies-0%20(Pure%20Web)-brightgreen.svg)](#)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
----
-
-## ✨ Fonctionnalités clés
-
-- 📖 **Mode Cours / Tutoriel enrichi** : Explications théoriques pas-à-pas avec diagrammes interactifs pour comprendre les plans gagnants et éviter le piège mortel du **PAT**.
-- 🎯 **Mode Suivi & Guidé** : Jouez vos coups en temps réel. Dès qu'un coup sous-optimal ou dangereux est joué, il est intercepté et l'échiquier vous montre la case optimale en vert.
-- 💡 **Indice & Conseil du meilleur coup** : Interroge la solution optimale avec calcul de distance au mat.
-- ⚔️ **Mode Pratique Libre** : Affrontez une IA défensive qui tente d'exploiter la règle des 50 coups, de forcer le pat ou de capturer toute pièce en l'air.
-- 🧠 **Architecture Hybride (En ligne + Hors-ligne)** :
-  - Connexion automatique aux **tables de finales Syzygy** (API Lichess publique gratuite, sans clé API requise) pour des coups parfaits à 100%.
-  - Moteur local **Minimax Alpha-Beta** profondeur 4 intégré avec détection d'attaques et de gaffes en cas d'utilisation hors-ligne.
-- 📱 **Interface responsive** : Thème dark moderne et fluide sur mobile, tablette et desktop.
+> Un entraîneur interactif et pédagogique pour maîtriser les mats les plus techniques et exigeants du jeu d'échecs :
+> - ♗♗ **Roi + 2 Fous contre Roi seul** (Méthode de la boîte et resserrement des diagonales).
+> - ♗♘ **Roi + Fou + Cavalier contre Roi seul** (La finale reine par excellence, manœuvre en W et orientation vers le bon coin).
+> - ♘♘ **Roi + 2 Cavaliers contre Roi** (Confinement et exploitation des imprécisions).
 
 ---
 
-## 🚀 Utilisation locale ou GitHub Pages
+## ⚡ S'entraîner Immédiatement (Sans Installation)
 
-Le projet est entièrement en HTML/CSS/JavaScript vanilla sans aucune dépendance ni build requis :
-1. Clonez le dépôt :
-   ```bash
-   git clone https://github.com/je-tu-il/ExtremeChessMat.git
-   ```
-2. Ouvrez simplement `index.html` dans n'importe quel navigateur moderne.
+👉 **[Lancer ExtremeChessMat en ligne : https://je-tu-il.github.io/ExtremeChessMat/](https://je-tu-il.github.io/ExtremeChessMat/)**
 
-Déployable directement sur **GitHub Pages** en activant l'hébergement depuis les paramètres de votre dépôt (`Settings > Pages > Branch: main`).
+Compatible PC, tablette et smartphone.
+
+---
+
+## ✨ Fonctionnalités Clés
+
+- 📖 **Mode Cours / Tutoriel Interactif** :
+  - Explications théoriques pas-à-pas avec diagrammes pour comprendre les plans gagnants et éviter le piège mortel du **PAT**.
+- 🎯 **Mode Guidé en Temps Réel** :
+  - Jouez vos coups librement. Dès qu'un coup sous-optimal ou dangereux est joué, il est intercepté et l'échiquier vous montre la case optimale en vert.
+- 💡 **Calcul de Distance au Mat** :
+  - Interrogez la solution optimale avec affichage du nombre exact de coups avant le mat.
+- ⚔️ **Mode Pratique Libre** :
+  - Affrontez une IA défensive coriace qui tente d'exploiter la règle des 50 coups, de forcer le pat ou de capturer une pièce mal protégée.
+- 🧠 **Moteur Hybride (En ligne + Hors-ligne)** :
+  - Connexion automatique aux **tables de finales Syzygy** (API Lichess publique gratuite) pour des coups 100% parfaits.
+  - Moteur local **Minimax Alpha-Beta** profondeur 4 intégré si vous jouez sans connexion internet.
+- 📱 **Interface Sombre Moderne** : Rendu ergonomique et lisible.
+
+---
+
+## 🛠️ Lancement Local
+
+Aucun outil de build ni installation Node.js n'est nécessaire :
+
+```bash
+git clone https://github.com/je-tu-il/ExtremeChessMat.git
+cd ExtremeChessMat
+```
+Ouvrez simplement `index.html` dans votre navigateur.
+
+---
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Libre d'utilisation pour l'apprentissage et les clubs.
